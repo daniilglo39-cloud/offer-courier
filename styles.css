@@ -1,26 +1,210 @@
-.tariffs-wrap{
-  margin: 18px auto 0;
-  width: min(1100px, 100%);
-  border: 1px solid rgba(255,255,255,.15);
-  border-radius: 16px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+:root{
+  --bg:#070709;
+  --card:#0d0d10;
+  --text:#f2f2f3;
+  --muted:#b6b6bd;
+  --line:rgba(255,255,255,.10);
+
+  --accent:#e11d2e;          /* красный */
+  --accent2:#8b0f18;         /* тёмно-красный */
+  --chip:#111115;
+
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
 }
 
-/* делаем “большой формат” */
-.tariffs-iframe{
-  width: 100%;
-  height: 78vh;           /* почти весь экран */
-  min-height: 720px;      /* чтобы было крупно на десктопе */
-  border: 0;
-  display: block;
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Noto Sans","Helvetica Neue",sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(900px 600px at 12% 0%, rgba(225,29,46,.20) 0%, rgba(0,0,0,0) 55%),
+    radial-gradient(900px 600px at 90% 10%, rgba(225,29,46,.10) 0%, rgba(0,0,0,0) 60%),
+    var(--bg);
 }
 
-/* на мобиле чуть выше */
-@media (max-width: 768px){
-  .tariffs-iframe{
-    height: 85vh;
-    min-height: 620px;
-  }
+a{color:var(--text); text-decoration:none}
+a:hover{text-decoration:underline}
+
+.wrap{max-width:1100px;margin:28px auto;padding:0 16px}
+.card{
+  background:rgba(13,13,16,.92);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:26px 22px;
+  box-shadow:var(--shadow);
+  backdrop-filter: blur(6px);
+}
+
+.topbar{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:14px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.badge{
+  width:12px;height:12px;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 0 4px rgba(225,29,46,.15);
+}
+.nav{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 12px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+  color:var(--text);
+}
+.btn:hover{background:rgba(255,255,255,.06)}
+.btn.red{
+  border-color:rgba(225,29,46,.45);
+  background:rgba(225,29,46,.12);
+}
+.btn.red:hover{background:rgba(225,29,46,.18)}
+
+h1{margin:0 0 10px;font-size:28px;line-height:1.25}
+.subtitle{color:var(--muted);margin:0 0 12px;line-height:1.6}
+
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 0}
+.chip{
+  background:var(--chip);
+  border:1px solid var(--line);
+  color:var(--muted);
+  padding:8px 10px;
+  border-radius:999px;
+  font-size:13px
+}
+
+hr{border:none;border-top:1px solid var(--line);margin:20px 0}
+h2{font-size:18px;margin:22px 0 10px}
+p,li{line-height:1.65}
+.muted{color:var(--muted)}
+.small{font-size:13px;color:var(--muted)}
+ul,ol{margin:8px 0 0 20px}
+
+.notice{
+  background:rgba(225,29,46,.10);
+  border:1px solid rgba(225,29,46,.35);
+  border-radius:14px;
+  padding:14px 14px;
+  margin:14px 0;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.toc{
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:14px 14px;
+  margin:14px 0 6px;
+  color:var(--muted);
+}
+.toc a{color:var(--text)}
+.toc a:hover{color:var(--accent)}
+
+.footer{
+  margin-top:22px;
+  padding-top:16px;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.6;
+}
+
+/* ===== Tariffs table (наша таблица, без Google-стиля) ===== */
+.table-wrap{
+  margin-top:14px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+  background:rgba(255,255,255,.02);
+}
+
+.table-toolbar{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 12px;
+  border-bottom:1px solid var(--line);
+}
+
+.search{
+  flex:1;
+  min-width:220px;
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+.search input{
+  width:100%;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid var(--line);
+  background:rgba(0,0,0,.25);
+  color:var(--text);
+  outline:none;
+}
+.search input::placeholder{color:rgba(255,255,255,.45)}
+
+.table-scroll{
+  overflow:auto;
+  max-height: calc(100vh - 260px); /* чтобы листалось вниз, а не маленькое окно */
+}
+
+table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  font-size:14px;
+}
+thead th{
+  position:sticky;
+  top:0;
+  z-index:2;
+  background:rgba(13,13,16,.98);
+  border-bottom:1px solid var(--line);
+  padding:12px 10px;
+  text-align:left;
+  font-weight:700;
+}
+tbody td{
+  border-bottom:1px solid rgba(255,255,255,.06);
+  padding:12px 10px;
+  vertical-align:middle;
+}
+tbody tr:hover{background:rgba(225,29,46,.06)}
+td.num{text-align:right; font-variant-numeric: tabular-nums;}
+td.city{font-weight:700}
+tfoot td{
+  padding:12px 10px;
+  background:rgba(225,29,46,.10);
+  border-top:1px solid rgba(225,29,46,.35);
+  font-weight:700;
+}
+
+@media print{
+  body{background:#fff;color:#000}
+  .card{background:#fff;color:#000;border:1px solid #ddd;box-shadow:none}
+  p,li,.muted,.small,.subtitle{color:#000}
+  a{color:#000;text-decoration:underline}
+  .chip,.notice,.toc,.table-wrap{border:1px solid #ddd;background:#fff;color:#000}
+  thead th{background:#fff}
 }
