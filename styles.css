@@ -142,3 +142,21 @@ th, td {
 
 
 th
+.top-accept {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 25px 0 40px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  background: rgba(255, 77, 77, 0.08);
+  border: 1px solid rgba(255, 77, 77, 0.25);
+  font-size: 15px;
+  color: #ffdede;
+}
+
+.top-accept input {
+  width: 20px;
+  height: 20px;
+  accent-color: #ff3b3b;
+}
