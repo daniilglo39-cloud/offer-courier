@@ -141,22 +141,76 @@ th, td {
 }
 
 
-th
 .top-accept {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 25px 0 40px;
-  padding: 14px 18px;
-  border-radius: 10px;
-  background: rgba(255, 77, 77, 0.08);
-  border: 1px solid rgba(255, 77, 77, 0.25);
-  font-size: 15px;
-  color: #ffdede;
+  align-items: flex-start;
+  gap: 18px;
+  margin: 30px 0 45px;
+  padding: 22px 26px;
+  border-radius: 14px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 77, 77, 0.18),
+    rgba(255, 0, 0, 0.08)
+  );
+  border: 2px solid rgba(255, 77, 77, 0.4);
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(255, 0, 0, 0.15);
+}
+
+.top-accept::before {
+  content: "⚠";
+  font-size: 22px;
+  margin-top: 2px;
 }
 
 .top-accept input {
-  width: 20px;
-  height: 20px;
-  accent-color: #ff3b3b;
+  width: 26px;
+  height: 26px;
+  accent-color: #ff2d2d;
+  margin-top: 2px;
+  cursor: pointer;
 }
+.top-accept.warning {
+  animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(255, 77, 77, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 77, 77, 0); }
+}
+<script>
+  const check = document.getElementById('acceptCheck');
+  const btn = document.getElementById('acceptBtn');
+  const result = document.getElementById('acceptResult');
+  const topAccept = document.querySelector('.top-accept');
+
+  check.addEventListener('change', () => {
+    if (check.checked) {
+      btn.classList.add('active');
+      btn.disabled = false;
+      topAccept.classList.remove('warning');
+    } else {
+      btn.classList.remove('active');
+      btn.disabled = true;
+    }
+  });
+
+  btn.addEventListener('click', () => {
+    if (!check.checked) {
+      topAccept.classList.add('warning');
+      topAccept.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    btn.classList.add('success');
+    btn.innerText = 'Оферта принята';
+    btn.disabled = true;
+    result.style.display = 'flex';
+  });
+
+  btn.disabled = true;
+</script>
