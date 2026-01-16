@@ -1,74 +1,39 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Приложение №1 — Тарифы</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Приложение №1 — Тарифы</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-<div class="container">
+<div class="page">
   <div class="card">
+
     <h1>Приложение №1 — Тарифы</h1>
-    <div class="subtitle">
-      Актуальные тарифы на курьерские услуги ООО «ДАЛЕ ЮГ».
-      Таблица обновляется автоматически.
+
+    <p class="subtitle">
+      Актуальные тарифы на курьерские услуги ООО «ДАЛЕ ЮГ».  
+      Таблица обновляется автоматически и является неотъемлемой частью публичной оферты.
+    </p>
+
+    <div class="table-wrapper">
+      <iframe
+        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRUvQ1UbXbVlA4SfF8rcXKqHjBiTc55eCRcCS_I-66bHEmmLaCGBo3k8LkfizggCBZTqgN1a0vBuND7/pubhtml?gid=1964894699&single=true"
+        frameborder="0"
+        loading="lazy">
+      </iframe>
     </div>
 
-    <div class="red-line"></div>
+    <p class="note">
+      Редакция тарифов берётся из Google Sheets автоматически.  
+      Изменения вступают в силу с момента публикации таблицы.
+    </p>
 
-    <div id="revision" class="badge">
-      Редакция тарифов: —
-    </div>
-
-    <div class="table-wrap">
-      <div class="table-scroll">
-        <table id="tariffTable">
-          <thead></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="footer">
-      Источник данных — Google Sheets. Изменения вступают в силу с момента публикации.
-    </div>
   </div>
 </div>
-
-<script>
-const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRUvQ1UbXbVlA4SfF8rcXKqHjBiTc55eCRcCS_I-66bHEmmLaCGBo3k8LkfizggCBZTqgN1a0vBuND7/pub?output=csv";
-
-fetch(SHEET_URL)
-  .then(r => r.text())
-  .then(csv => {
-    const rows = csv.split("\n").map(r => r.split(","));
-
-    // Редакция
-    document.getElementById("revision").innerText =
-      "Редакция тарифов: " + rows[0][1];
-
-    // Заголовки
-    const thead = document.querySelector("#tariffTable thead");
-    thead.innerHTML = "<tr>" + rows[2].map(h => `<th>${h}</th>`).join("") + "</tr>";
-
-    // Данные
-    const tbody = document.querySelector("#tariffTable tbody");
-    rows.slice(3).forEach(row => {
-      if(row[0]){
-        tbody.innerHTML += `
-          <tr>
-            ${row.map((c,i)=>
-              i===0
-                ? `<td class="city">${c}</td>`
-                : `<td class="num">${c}</td>`
-            ).join("")}
-          </tr>`;
-      }
-    });
-  });
-</script>
 
 </body>
 </html>
