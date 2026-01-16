@@ -1,18 +1,26 @@
-.tariffs {
-  margin-top: 32px;
-}
-
-.tariffs-frame {
-  margin-top: 16px;
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: 12px;
+.tariffs-wrap{
+  margin: 18px auto 0;
+  width: min(1100px, 100%);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 16px;
   overflow: hidden;
-  background: #111;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
 }
 
-.tariffs-frame iframe {
+/* делаем “большой формат” */
+.tariffs-iframe{
   width: 100%;
-  height: 700px;
-  border: none;
-  background: #fff;
+  height: 78vh;           /* почти весь экран */
+  min-height: 720px;      /* чтобы было крупно на десктопе */
+  border: 0;
+  display: block;
+}
+
+/* на мобиле чуть выше */
+@media (max-width: 768px){
+  .tariffs-iframe{
+    height: 85vh;
+    min-height: 620px;
+  }
 }
