@@ -2,38 +2,61 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Приложение №1 — Тарифы</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+<div class="container">
+  <div class="card">
 
-  <div class="page">
-    <div class="card">
-
-      <h1>Приложение №1 — Тарифы</h1>
-
-      <div class="subtitle">
-        Актуальные тарифы на курьерские услуги ООО «ДАЛЕ ЮГ».
-        Таблица обновляется автоматически и является неотъемлемой частью публичной оферты.
-      </div>
-
-      <!-- ТАБЛИЦА -->
-      <div class="table-wrapper">
-        <iframe
-          src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRUvQ1UbXbVlA4SfF8rcXKqHjBiTc55eCRcCS_I-66bHEmmLaCGBo3k8LkfizggCBZTqgN1a0vBuND7/pubhtml?gid=1964894699&single=true"
-          loading="lazy">
-        </iframe>
-      </div>
-
-      <div class="note">
-        Редакция тарифов берётся из Google Sheets автоматически.  
-        Изменения вступают в силу с момента публикации таблицы.
-      </div>
-
+    <h1>Приложение №1</h1>
+    <div class="subtitle">
+      Тарифы на курьерские услуги ООО «ДАЛЕ ЮГ»
     </div>
-  </div>
 
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Расстояние, км</th>
+            <th>Цена за точку (₽)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>0–150</td><td>520</td></tr>
+          <tr><td>151–250</td><td>570</td></tr>
+          <tr><td>251–350</td><td>640</td></tr>
+          <tr><td>351–450</td><td>700</td></tr>
+          <tr><td>451–550</td><td>730</td></tr>
+          <tr><td>551–650</td><td>750</td></tr>
+          <tr><td>651 и более</td><td>770</td></tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>Доплата за доп. грузчика</td>
+            <td>1 300 ₽</td>
+          </tr>
+          <tr>
+            <td>Смена ДО</td>
+            <td>4 000 ₽</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="notice">
+      Тарифы являются неотъемлемой частью публичной оферты.<br>
+      ООО «ДАЛЕ ЮГ» вправе изменять тарифы в одностороннем порядке
+      с уведомлением не менее чем за 3 календарных дня.
+    </div>
+
+    <div class="footer">
+      Актуально на 2026 год
+    </div>
+
+  </div>
+</div>
 </body>
 </html>
