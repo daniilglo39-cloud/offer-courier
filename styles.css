@@ -1,103 +1,77 @@
-:root{
-  --bg:#0b0b0d;
-  --card:#111114;
-  --text:#f5f5f6;
-  --muted:#b0b0b8;
-  --line:rgba(255,255,255,.08);
-  --red:#e11d2e;
+/* === ОСНОВА === */
+body {
+  margin: 0;
+  background: radial-gradient(
+    1200px 600px at 10% 0%,
+    #2a0b0b 0%,
+    #0b0b0b 50%
+  );
+  color: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, Arial, sans-serif;
 }
 
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Inter,system-ui,Arial,sans-serif;
-  background:
-    radial-gradient(700px 400px at 10% 0%, rgba(225,29,46,.25), transparent 60%),
-    var(--bg);
-  color:var(--text);
+/* === КОНТЕЙНЕР === */
+.page {
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 0 20px;
 }
 
-.container{
-  max-width:1200px;
-  margin:40px auto;
-  padding:0 16px;
+/* === КАРТОЧКА === */
+.card {
+  background: rgba(10, 10, 10, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
 }
 
-.card{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:28px;
+/* === ЗАГОЛОВКИ === */
+h1 {
+  margin: 0 0 12px;
+  font-size: 32px;
 }
 
-h1{margin:0 0 8px;font-size:30px}
-.subtitle{color:var(--muted);margin-bottom:16px}
-
-.red-line{
-  height:3px;
-  width:60px;
-  background:var(--red);
-  border-radius:99px;
-  margin:12px 0 24px;
+.subtitle {
+  color: #cfcfcf;
+  margin-bottom: 26px;
+  line-height: 1.6;
+  font-size: 15px;
 }
 
-.badge{
-  display:inline-block;
-  background:rgba(225,29,46,.15);
-  border:1px solid rgba(225,29,46,.4);
-  padding:8px 12px;
-  border-radius:999px;
-  font-size:14px;
-  margin-bottom:18px;
+/* === ТАБЛИЦА === */
+.table-wrapper {
+  width: 100%;
+  height: 75vh;                 /* большая, на экран */
+  margin: 10px auto 30px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #ffffff;          /* Google Sheets всегда белые */
 }
 
-.table-wrap{
-  margin-top:24px;
-  border-radius:14px;
-  overflow:hidden;
-  border:1px solid var(--line);
+.table-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
-.table-scroll{
-  max-height:70vh;
-  overflow-y:auto;
+/* === ПРИМЕЧАНИЕ === */
+.note {
+  color: #bdbdbd;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-top: 12px;
 }
 
-table{
-  width:100%;
-  border-collapse:collapse;
-  font-size:14px;
-}
+/* === АДАПТИВ === */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 24px;
+  }
 
-thead th{
-  position:sticky;
-  top:0;
-  background:#141417;
-  padding:14px 10px;
-  text-align:left;
-  border-bottom:1px solid var(--line);
-}
-
-tbody td{
-  padding:12px 10px;
-  border-bottom:1px solid rgba(255,255,255,.05);
-}
-
-tbody tr:hover{
-  background:rgba(225,29,46,.08);
-}
-
-td.num{
-  text-align:right;
-  font-variant-numeric:tabular-nums;
-}
-
-.city{
-  font-weight:700;
-}
-
-.footer{
-  margin-top:20px;
-  color:var(--muted);
-  font-size:13px;
+  .table-wrapper {
+    height: 80vh;
+  }
 }
